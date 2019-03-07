@@ -1,0 +1,47 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/recommended",
+    "@vue/standard"
+  ],
+  "globals": {
+    "uni": true
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "rules": {
+    "vue/html-self-closing":"off",
+    "vue/max-attributes-per-line": "off",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/name-property-casing": [
+      "error",
+      "kebab-case"
+    ],
+    "vue/component-name-in-template-casing": [
+      "error",
+      "kebab-case"
+    ],
+    "vue/script-indent": [
+      "error",
+      2,
+      {
+        "baseIndent": 1,
+        "switchCase": 1
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.vue"
+      ],
+      "rules": {
+        "indent": "off"
+      }
+    }
+  ]
+}
