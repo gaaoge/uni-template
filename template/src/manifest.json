@@ -1,10 +1,10 @@
 {
-  "name": "uni-template",
+  "name": "<%= name %>",
   "appid": "",
-  "description": "",
+  "description": "<%= options.description %>",
   "versionName": "1.0.0",
   "versionCode": "100",
-  "transformPx": false,
+  "transformPx": true,
   "app-plus": {
     /* 5+App特有相关 */
     "modules": {
