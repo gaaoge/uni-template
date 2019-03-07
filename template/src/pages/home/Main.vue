@@ -30,10 +30,10 @@
 
     & > text {
       display: block;
-      padding: 150upx 0;
-      font-size: 100upx;
+      padding: 150px 0;
+      font-size: 100px;
       font-weight: bold;
-      line-height: 200upx;
+      line-height: 200px;
       text-align: center;
     }
   }
