@@ -1,12 +1,15 @@
 <template>
   <view class="home-main">
     <text @click="sayHello">Hello Uni!</text>
-    <home-logo></home-logo>
+    <button open-type="share">
+      <home-logo></home-logo>
+    </button>
   </view>
 </template>
 
 <script>
   import HomeLogo from './components/Logo'
+  import { getStaticPath } from '@/utils'
 
   export default {
     name: 'home-main',
@@ -20,6 +23,13 @@
           icon: 'none',
           duration: 2000
         })
+      }
+    },
+    onShareAppMessage () {
+      return {
+        title: 'Hello Uni!',
+        path: '/pages/home/Main',
+        imageUrl: getStaticPath('share-icon.png')
       }
     }
   }
@@ -35,6 +45,15 @@
       font-weight: bold;
       line-height: 200px;
       text-align: center;
+    }
+
+    & > button {
+      margin: 0 auto;
+      background: transparent;
+
+      &:after {
+        display: none;
+      }
     }
   }
 </style>

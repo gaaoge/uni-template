@@ -10,8 +10,8 @@
 
 <style>
   .home-logo {
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     margin: 0 auto;
     background: url("../assets/logo.png");
     background-size: 100% 100%;
