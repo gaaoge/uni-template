@@ -5,10 +5,7 @@ const path = require('path')
 const easeftp = require('easeftp/upload')
 const ftppass = JSON.parse(fs.readFileSync('.ftppass', 'utf-8'))
 
-const cacheDir = 'node_modules/.cache/easeftp/'
-if (!fs.existsSync(cacheDir)) {
-  fs.mkdirSync(cacheDir)
-}
+const cacheDir = path.resolve('node_modules/.cache/easeftp/')
 
 function findFiles (rootPath, replacePath = '') {
   let result = []
@@ -48,6 +45,15 @@ function uploadStatic (platform) {
     path: 'activity/' + pkg.name,
     cwd: path.resolve(`dist/build/${platform}/`)
   }).then(() => {
+    if (!fs.existsSync(cacheDir)) {
+      cacheDir.split('/').reduce((current, next) => {
+        const full = path.resolve(current, next)
+        if (!fs.existsSync(full)) {
+          fs.mkdirSync(full)
+        }
+        return full
+      }, '/')
+    }
     fs.writeFileSync(cachePath, JSON.stringify(allFiles))
   })
 }
@@ -87,6 +93,6 @@ exports['publish:mp-toutiao'] = async function () {
   await uploadStatic('mp-toutiao')
 }
 
-exports['clear-cache'] = function () {
+exports['clear'] = function () {
   return del([cacheDir])
 }
