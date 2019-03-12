@@ -1,4 +1,5 @@
 const presetEnv = require('postcss-preset-env')
+const autoSize = require('postcss-autosize')
 const uniPlugin = require('@dcloudio/vue-cli-plugin-uni/packages/postcss')
 
 module.exports = {
@@ -6,6 +7,7 @@ module.exports = {
     presetEnv({
       stage: 0
     }),
+    autoSize(),
     uniPlugin()
   ]
 }

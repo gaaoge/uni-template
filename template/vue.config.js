@@ -1,3 +1,4 @@
+const pkg = require('./package.json')
 const path = require('path')
 const apiMocker = require('mocker-api')
 
@@ -25,5 +26,18 @@ module.exports = {
     config.module
       .rule('svg')
       .test(/\.(svg|gif|webp)(\?.*)?$/)
+
+    let rules = ['images', 'svg', 'media', 'fonts']
+    rules.forEach(rule => {
+      config.module
+        .rule(rule)
+        .use(rule === 'svg' ? 'file-loader' : 'url-loader')
+        .tap(options => {
+          let publicPath = process.env.NODE_ENV === 'production' ?
+            `//static.ws.126.net/163/activity/${pkg.name}/` : 'http://localhost:8080/'
+          options.publicPath = publicPath
+          return options
+        })
+    })
   }
 }

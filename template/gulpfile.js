@@ -1,0 +1,92 @@
+const pkg = require('./package.json')
+const fs = require('fs')
+const del = require('del')
+const path = require('path')
+const easeftp = require('easeftp/upload')
+const ftppass = JSON.parse(fs.readFileSync('.ftppass', 'utf-8'))
+
+const cacheDir = 'node_modules/.cache/easeftp/'
+if (!fs.existsSync(cacheDir)) {
+  fs.mkdirSync(cacheDir)
+}
+
+function findFiles (rootPath, replacePath = '') {
+  let result = []
+
+  function finder (tempPath) {
+    let files = fs.readdirSync(tempPath)
+    files.forEach((val) => {
+      let fPath = path.posix.join(tempPath, val)
+      let stats = fs.statSync(fPath)
+
+      if (stats.isDirectory()) {
+        finder(fPath)
+      } else if (stats.isFile()) {
+        result.push(fPath.replace(rootPath, replacePath))
+      }
+    })
+  }
+
+  finder(rootPath)
+  return result
+}
+
+function uploadStatic (platform) {
+  let allFiles = findFiles(`dist/build/${platform}/static/`, 'static/')
+
+  let cacheFiles = []
+  let cachePath = `${cacheDir}/cache-${platform}.json`
+  if (fs.existsSync(cachePath)) {
+    cacheFiles = JSON.parse(fs.readFileSync(cachePath, 'utf-8'))
+  }
+
+  let newFiles = allFiles.filter(item => cacheFiles.indexOf(item) === -1)
+
+  return easeftp.addFile(newFiles, {
+    debug: true,
+    ...ftppass,
+    path: 'activity/' + pkg.name,
+    cwd: path.resolve(`dist/build/${platform}/`)
+  }).then(() => {
+    fs.writeFileSync(cachePath, JSON.stringify(allFiles))
+  })
+}
+
+function uploadHtml (dir) {
+  return easeftp.addFile(['index.html'], {
+    debug: true,
+    ...ftppass,
+    path: `${dir}/activity/${pkg.name}`,
+    cwd: path.resolve('dist/build/h5')
+  })
+}
+
+exports['test:h5'] = async function () {
+  await uploadStatic('h5')
+  await uploadHtml('test')
+}
+
+exports['publish:h5'] = async function () {
+  await uploadStatic('h5')
+  await uploadHtml('html')
+}
+
+exports['publish:mp-weixin'] = async function () {
+  await uploadStatic('mp-weixin')
+}
+
+exports['publish:mp-alipay'] = async function () {
+  await uploadStatic('mp-alipay')
+}
+
+exports['publish:mp-baidu'] = async function () {
+  await uploadStatic('mp-baidu')
+}
+
+exports['publish:mp-toutiao'] = async function () {
+  await uploadStatic('mp-toutiao')
+}
+
+exports['clear-cache'] = function () {
+  return del([cacheDir])
+}
