@@ -3,6 +3,7 @@ module.exports = (api, options, rootOptions) => {
     delete pkg.postcss
     delete pkg.browserslist
     return {
+      name: options.name,
       description: options.description,
       author: options.author,
       scripts: {

@@ -6,7 +6,7 @@
   "versionCode": "100",
   "transformPx": true,
   "h5": {
-    "publicPath": "//static.ws.126.net/163/activity/<%= name %>"
+    "publicPath": "//static.ws.126.net/163/activity/<%= options.name %>"
   },
   "mp-weixin": {
     "appid": ""

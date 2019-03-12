@@ -1,5 +1,10 @@
 module.exports = [
   {
+    name: 'name',
+    type: 'input',
+    message: '项目名称'
+  },
+  {
     name: 'description',
     type: 'input',
     message: '项目描述'
