@@ -1,0 +1,4 @@
+{
+  "username": "<%= options.username %>",
+  "password": "<%= options.password %>"
+}
