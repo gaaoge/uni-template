@@ -7,6 +7,8 @@ module.exports = (api, options) => {
       description: options.description,
       author: options.author,
       scripts: {
+        "serve": "npm run dev:h5",
+        "build": "npm run build:h5",
         'lint': 'vue-cli-service lint',
         'dev:h5': 'cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve',
         'dev:mp-weixin': 'cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch',
