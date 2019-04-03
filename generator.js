@@ -1,4 +1,4 @@
-module.exports = (api, options, rootOptions) => {
+module.exports = (api, options) => {
   api.extendPackage(pkg => {
     delete pkg.postcss
     delete pkg.browserslist
@@ -27,7 +27,7 @@ module.exports = (api, options, rootOptions) => {
         '@dcloudio/uni-mp-toutiao': '*',
         '@dcloudio/uni-mp-weixin': '*',
         'flyio': '^0.6.14',
-        'vue': '^2.6.8',
+        'vue': '^2.6.10',
         'vuex': '^3.0.1'
       },
       devDependencies: {
@@ -35,21 +35,21 @@ module.exports = (api, options, rootOptions) => {
         '@dcloudio/vue-cli-plugin-uni': '*',
         '@dcloudio/webpack-uni-mp-loader': '*',
         '@dcloudio/webpack-uni-pages-loader': '*',
-        '@vue/cli-plugin-babel': '^3.5.0',
-        '@vue/cli-plugin-eslint': '^3.5.0',
-        '@vue/cli-service': '^3.5.0',
+        '@vue/cli-plugin-babel': '^3.5.5',
+        '@vue/cli-plugin-eslint': '^3.5.1',
+        '@vue/cli-service': '^3.5.3',
         '@vue/eslint-config-standard': '^4.0.0',
         'babel-eslint': '^10.0.1',
         'babel-plugin-import': '^1.11.0',
         'easeftp': '^2.0.40',
-        'eslint': '^5.14.1',
+        'eslint': '^5.16.0',
         'eslint-plugin-vue': '^5.2.2',
         'gulp': '^4.0.0',
         'mocker-api': '^1.6.7',
         'postcss-autosize': '^1.0.1',
         'postcss-preset-env': '^6.5.0',
         'tinify-loader': '^0.2.4',
-        'vue-template-compiler': '^2.6.8'
+        'vue-template-compiler': '^2.6.10'
       },
       browserslist: [
         '> 1%',
