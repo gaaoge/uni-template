@@ -28,7 +28,7 @@
     onShareAppMessage () {
       return {
         title: 'Hello Uni!',
-        path: '/pages/home/Main',
+        path: 'pages/home/Main',
         imageUrl: getStaticPath('share-icon.png')
       }
     }
@@ -48,6 +48,10 @@
     }
 
     & > button {
+      width: 400px;
+      height: 400px;
+      padding: 0;
+      border: 0;
       margin: 0 auto;
       background: transparent;
 

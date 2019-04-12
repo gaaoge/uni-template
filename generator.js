@@ -34,6 +34,7 @@ module.exports = (api, options) => {
       },
       devDependencies: {
         '@dcloudio/uni-cli-shared': '*',
+        "@dcloudio/uni-template-compiler": "*",
         '@dcloudio/vue-cli-plugin-uni': '*',
         '@dcloudio/webpack-uni-mp-loader': '*',
         '@dcloudio/webpack-uni-pages-loader': '*',
