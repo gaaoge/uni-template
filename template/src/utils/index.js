@@ -33,7 +33,23 @@ function getStaticPath (path) {
   return __webpack_public_path__ + 'static/' + path // eslint-disable-line
 }
 
+// 异步执行函数，等待上一次执行完成后才能进行下次的执行
+let asyncKeys = {}
+async function asyncExec (func, key) {
+  if (asyncKeys[key]) return
+
+  asyncKeys[key] = true
+  try {
+    await func()
+    delete asyncKeys[key]
+  } catch (e) {
+    delete asyncKeys[key]
+    throw e
+  }
+}
+
 export {
   formatDate,
-  getStaticPath
+  getStaticPath,
+  asyncExec
 }
