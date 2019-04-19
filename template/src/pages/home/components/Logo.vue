@@ -8,7 +8,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .home-logo {
     width: 400px;
     height: 400px;

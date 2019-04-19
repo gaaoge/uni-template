@@ -35,7 +35,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .home-main {
 
     & > text {
