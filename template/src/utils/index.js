@@ -48,8 +48,16 @@ async function asyncExec (func, key) {
   }
 }
 
+// 异步等待函数
+async function sleep (duration) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, duration)
+  })
+}
+
 export {
   formatDate,
   getStaticPath,
-  asyncExec
+  asyncExec,
+  sleep
 }
