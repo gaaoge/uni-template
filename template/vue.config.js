@@ -1,4 +1,3 @@
-const pkg = require('./package.json')
 const path = require('path')
 const apiMocker = require('mocker-api')
 
