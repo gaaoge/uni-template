@@ -29,7 +29,8 @@ function findFiles (rootPath, replacePath = '') {
 }
 
 function uploadStatic (platform) {
-  let allFiles = findFiles(`dist/build/${platform}/static/`, 'static/')
+  let staticPath = `dist/build/${platform}/static/`
+  let allFiles = findFiles(staticPath, 'static/')
 
   let cacheFiles = []
   let cachePath = `${cacheDir}/cache-${platform}.json`
@@ -55,6 +56,7 @@ function uploadStatic (platform) {
       }, '/')
     }
     fs.writeFileSync(cachePath, JSON.stringify(allFiles))
+    del(staticPath)
   })
 }
 
