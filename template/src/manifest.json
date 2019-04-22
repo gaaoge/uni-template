@@ -12,7 +12,8 @@
     "appid": "",
     "usingComponents": true,
     "setting": {
-      "urlCheck": false
+      "urlCheck": false,
+      "es6": false
     }
   },
   "mp-baidu": {
