@@ -1,2 +1,3 @@
 VUE_APP_TITLE=<%= options.title %>
 VUE_APP_HOST=
+STATIC_PUBLIC_PATH=//static.ws.126.net/163/activity/<%= options.name %>/

@@ -33,9 +33,7 @@ module.exports = {
         .rule(rule)
         .use(rule === 'svg' ? 'file-loader' : 'url-loader')
         .tap(options => {
-          let publicPath = process.env.NODE_ENV === 'production'
-            ? `//static.ws.126.net/163/activity/${pkg.name}/` : 'http://localhost:8080/'
-          options.publicPath = publicPath
+          options.publicPath = process.env.STATIC_PUBLIC_PATH
           return options
         })
     })
