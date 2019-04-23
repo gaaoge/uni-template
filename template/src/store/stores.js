@@ -61,7 +61,9 @@ const stores = {
         uni.request({
           url: process.env.VUE_APP_HOST + url,
           method,
-          header,
+          header: Object.assign({
+            'Content-Type': method.toLowerCase() === 'post' ? 'application/x-www-form-urlencoded' : 'application/json'
+          }, header),
           data: params,
           success (res) {
             resolve(res.data)
