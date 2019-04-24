@@ -56,7 +56,7 @@ const stores = {
      *    params: 请求参数
      *  }
      */
-    async fetch ({ dispatch }, { url, method, header, params }) {
+    async fetch ({ dispatch }, { url, method = 'get', header, params }) {
       let data = await new Promise((resolve, reject) => {
         uni.request({
           url: process.env.VUE_APP_HOST + url,
