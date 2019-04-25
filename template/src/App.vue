@@ -14,5 +14,7 @@
 </script>
 
 <style>
-
+  * {
+    font: 28px/1.5 sans-serif;
+  }
 </style>
