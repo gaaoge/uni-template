@@ -64,7 +64,7 @@ const stores = {
             url: process.env.VUE_APP_HOST + url,
             method,
             header: Object.assign({
-              'Content-Type': method.toLowerCase() === 'post' ? 'application/x-www-form-urlencoded' : 'application/json',
+              'Content-Type': method.toLowerCase() === 'post' ? 'application/x-www-form-urlencoded' : 'application/json'
             }, header),
             data: params,
             success ({ statusCode, data }) {
