@@ -57,26 +57,35 @@ const stores = {
      *  }
      */
     async fetch ({ dispatch }, { url, method = 'get', header, params }) {
-      let data = await new Promise((resolve, reject) => {
-        uni.request({
-          url: process.env.VUE_APP_HOST + url,
-          method,
-          header: Object.assign({
-            'Content-Type': method.toLowerCase() === 'post' ? 'application/x-www-form-urlencoded' : 'application/json'
-          }, header),
-          data: params,
-          success (res) {
-            resolve(res.data)
-          },
-          fail () {
-            uni.showToast({
-              title: '网络请求出错',
-              icon: 'none'
-            })
-            reject(new Error('网络请求出错'))
-          }
+      let data
+      try {
+        data = await new Promise((resolve, reject) => {
+          uni.request({
+            url: process.env.VUE_APP_HOST + url,
+            method,
+            header: Object.assign({
+              'Content-Type': method.toLowerCase() === 'post' ? 'application/x-www-form-urlencoded' : 'application/json',
+            }, header),
+            data: params,
+            success ({ statusCode, data }) {
+              if (statusCode === 200) {
+                resolve(data)
+              } else {
+                reject(new Error('网络请求出错'))
+              }
+            },
+            fail () {
+              reject(new Error('网络请求出错'))
+            }
+          })
         })
-      })
+      } catch (e) {
+        uni.showToast({
+          title: e.message,
+          icon: 'none'
+        })
+        throw e
+      }
 
       // 处理错误返回结果
       if (data.code !== 10000) {
