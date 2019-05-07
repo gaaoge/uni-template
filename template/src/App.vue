@@ -1,20 +1,20 @@
 <script>
   export default {
     mpType: 'app',
-    onLaunch: function () {
+    onLaunch () {
       console.log('App Launch')
     },
-    onShow: function () {
+    onShow () {
       console.log('App Show')
     },
-    onHide: function () {
+    onHide () {
       console.log('App Hide')
     }
   }
 </script>
 
 <style>
-  * {
+  page {
     font: 28px/1.5 sans-serif;
   }
 </style>
