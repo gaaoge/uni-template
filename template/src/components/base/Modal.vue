@@ -1,5 +1,5 @@
 <template>
-  <view v-if="isShow" class="base-modal" :class="{enter: isEnter, leave: isLeave}" @animationend="animationEnd" @WebkitAnimationEnd="animationEnd">
+  <view v-if="isShow" class="base-modal" :class="{enter: isEnter, leave: isLeave}" @animationend="animationEnd" @webkitAnimationEnd="animationEnd">
     <slot></slot>
   </view>
 </template>
