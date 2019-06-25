@@ -35,7 +35,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
   .home-main {
 
     & > text {

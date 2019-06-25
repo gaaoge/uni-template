@@ -8,7 +8,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
   .home-logo {
     width: 400px;
     height: 400px;

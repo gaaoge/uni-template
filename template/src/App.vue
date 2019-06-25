@@ -13,7 +13,7 @@
   }
 </script>
 
-<style>
+<style lang="postcss" scoped>
   page {
     font: 28px/1.5 sans-serif;
   }

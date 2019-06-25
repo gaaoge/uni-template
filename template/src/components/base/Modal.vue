@@ -43,7 +43,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
   .base-modal {
     display: flex;
     justify-content: center;
