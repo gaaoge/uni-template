@@ -1,5 +1,5 @@
 <template>
-  <view class="home-main">
+  <view class="home-page">
     <text @click="sayHello">Hello Uni!</text>
     <button open-type="share">
       <home-logo></home-logo>
@@ -12,7 +12,7 @@
   import { getStaticPath } from '@/utils'
 
   export default {
-    name: 'home-main',
+    name: 'home-page',
     components: {
       HomeLogo
     },
@@ -28,7 +28,7 @@
     onShareAppMessage () {
       return {
         title: 'Hello Uni!',
-        path: 'pages/home/Main',
+        path: 'pages/home/Page',
         imageUrl: getStaticPath('share-icon.png')
       }
     }
@@ -36,7 +36,7 @@
 </script>
 
 <style lang="postcss" scoped>
-  .home-main {
+  .home-page {
 
     & > text {
       display: block;
