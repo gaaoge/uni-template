@@ -3,7 +3,7 @@
  */
 
 // 格式化时间
-function formatDate (dateInput, format) {
+function formatDate(dateInput, format) {
   let date = new Date(dateInput)
 
   let o = {
@@ -13,29 +13,35 @@ function formatDate (dateInput, format) {
     'm+': date.getMinutes(), // minute
     's+': date.getSeconds(), // second
     'q+': Math.floor((date.getMonth() + 3) / 3), // quarter
-    'S': date.getMilliseconds() // millisecond
+    'S+': date.getMilliseconds() // millisecond
   }
 
   if (/(y+)/.test(format)) {
-    format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+    format = format.replace(
+      RegExp.$1,
+      (date.getFullYear() + '').substr(4 - RegExp.$1.length)
+    )
   }
 
   for (let k in o) {
     if (new RegExp('(' + k + ')').test(format)) {
-      format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length))
+      format = format.replace(
+        RegExp.$1,
+        RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
+      )
     }
   }
   return format
 }
 
 // 获取static目录文件的实际路径
-function getStaticPath (path) {
+function getStaticPath(path) {
   return __webpack_public_path__ + 'static/' + path // eslint-disable-line
 }
 
 // 异步执行函数，等待上一次执行完成后才能进行下次的执行
 let asyncKeys = {}
-async function asyncExec (func, key) {
+async function asyncExec(func, key) {
   if (asyncKeys[key]) return
 
   asyncKeys[key] = true
@@ -49,15 +55,10 @@ async function asyncExec (func, key) {
 }
 
 // 异步等待函数
-async function sleep (duration) {
-  return new Promise((resolve, reject) => {
+async function sleep(duration) {
+  return new Promise(resolve => {
     setTimeout(resolve, duration)
   })
 }
 
-export {
-  formatDate,
-  getStaticPath,
-  asyncExec,
-  sleep
-}
+export { formatDate, getStaticPath, asyncExec, sleep }

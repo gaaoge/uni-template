@@ -10,7 +10,7 @@ const stores = {
     dialogConfig: {}
   },
   mutations: {
-    [DIALOG_CONFIG] (state, payload) {
+    [DIALOG_CONFIG](state, payload) {
       state.dialogConfig = payload
     }
   },
@@ -26,8 +26,8 @@ const stores = {
      *    params: 其他弹窗参数
      *  }
      */
-    openDialog ({ state: { dialogConfig }, commit }, payload) {
-      let config = Object.assign({}, dialogConfig, {
+    openDialog({ state, commit }, payload) {
+      let config = Object.assign({}, state.dialogConfig, {
         [payload.dialog || payload]: payload
       })
       commit(DIALOG_CONFIG, config)
@@ -40,15 +40,15 @@ const stores = {
      *    dialog: 弹窗名称
      *  }
      */
-    closeDialog ({ state: { dialogConfig }, commit }, payload) {
-      let config = Object.assign({}, dialogConfig, {
+    closeDialog({ state, commit }, payload) {
+      let config = Object.assign({}, state.dialogConfig, {
         [payload.dialog || payload]: null
       })
       commit(DIALOG_CONFIG, config)
     },
     /**
      * 发送fetch请求
-     * @param {Object} payload
+     * @param {Object}
      *  {
      *    url: 请求url,
      *    method: 请求方法（默认get）
@@ -56,25 +56,30 @@ const stores = {
      *    params: 请求参数
      *  }
      */
-    async fetch ({ dispatch }, { url, method = 'get', header, params }) {
+    async fetch(context, { url, method = 'get', header, params }) {
+      url = process.env.VUE_APP_HOST + url
+      if (method.toLowerCase() === 'post') {
+        header = Object.assign({}, header, {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        })
+      }
+
       let data
       try {
         data = await new Promise((resolve, reject) => {
           uni.request({
-            url: process.env.VUE_APP_HOST + url,
+            url,
             method,
-            header: Object.assign({
-              'Content-Type': method.toLowerCase() === 'post' ? 'application/x-www-form-urlencoded' : 'application/json'
-            }, header),
+            header,
             data: params,
-            success ({ statusCode, data }) {
+            success({ statusCode, data }) {
               if (statusCode === 200) {
                 resolve(data)
               } else {
                 reject(new Error('网络请求出错'))
               }
             },
-            fail () {
+            fail() {
               reject(new Error('网络请求出错'))
             }
           })

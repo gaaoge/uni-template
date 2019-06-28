@@ -4,7 +4,7 @@ const apiMocker = require('mocker-api')
 module.exports = {
   configureWebpack: {
     devServer: {
-      before (app) {
+      before(app) {
         apiMocker(app, path.resolve('./mock/index.js'))
       }
     }
@@ -22,9 +22,7 @@ module.exports = {
         }
       })
 
-    config.module
-      .rule('svg')
-      .test(/\.(svg|gif|webp)(\?.*)?$/)
+    config.module.rule('svg').test(/\.(svg|gif|webp)(\?.*)?$/)
 
     let rules = ['images', 'svg', 'media', 'fonts']
     rules.forEach(rule => {
