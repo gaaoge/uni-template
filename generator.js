@@ -1,5 +1,6 @@
 module.exports = (api, options) => {
   api.extendPackage(pkg => {
+    delete pkg.scripts
     delete pkg.postcss
     delete pkg.browserslist
     return {
