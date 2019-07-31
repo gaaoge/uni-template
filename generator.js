@@ -1,6 +1,5 @@
 module.exports = (api, options) => {
   api.extendPackage(pkg => {
-    delete pkg.scripts
     delete pkg.postcss
     delete pkg.browserslist
     return {
@@ -8,15 +7,12 @@ module.exports = (api, options) => {
       description: options.description,
       author: options.author,
       scripts: {
-        'dev': `cross-env NODE_ENV=development UNI_PLATFORM=${
-          options.platform
-        } vue-cli-service uni-build --watch`,
-        'build': `cross-env NODE_ENV=production UNI_PLATFORM=${
-          options.platform
-        } vue-cli-service uni-build --watch`,
-        'serve':
+        serve:
           'cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve',
-        'lint': 'vue-cli-service lint'
+        build: `cross-env NODE_ENV=production UNI_PLATFORM=${
+          options.platform
+        } vue-cli-service uni-build --watch`,
+        lint: 'vue-cli-service lint'
       },
       dependencies: {
         '@dcloudio/uni-h5': '^0.7.3',
