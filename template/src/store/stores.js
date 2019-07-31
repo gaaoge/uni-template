@@ -48,29 +48,36 @@ const stores = {
     },
     /**
      * 发送fetch请求
-     * @param {Object}
+     * @param {Object} payload
      *  {
      *    url: 请求url,
      *    method: 请求方法（默认get）
-     *    header: 请求头
+     *    headers: 请求头
      *    params: 请求参数
      *  }
      */
-    async fetch(context, { url, method = 'get', header, params }) {
-      url = process.env.VUE_APP_HOST + url
-      if (method.toLowerCase() === 'post') {
-        header = Object.assign({}, header, {
+    async fetch(context, payload = {}) {
+      let { url, method = 'get', headers = {}, params } = payload
+
+      // 配置url和method
+      url = process.env.VUE_APP_BASE_URL + url
+      method = method.toLowerCase()
+
+      // 配置headers
+      if (method === 'post') {
+        headers = Object.assign({}, headers, {
           'Content-Type': 'application/x-www-form-urlencoded'
         })
       }
 
+      // 发送请求
       let data
       try {
         data = await new Promise((resolve, reject) => {
           uni.request({
             url,
             method,
-            header,
+            header: headers,
             data: params,
             success({ statusCode, data }) {
               if (statusCode === 200) {
@@ -102,6 +109,7 @@ const stores = {
             })
             break
         }
+
         let err = new Error(data.msg)
         err.code = data.code
         throw err

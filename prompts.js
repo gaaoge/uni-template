@@ -15,9 +15,21 @@ module.exports = [
     message: '项目作者'
   },
   {
-    name: 'title',
+    name: 'platform',
+    type: 'list',
+    message: '小程序平台',
+    choices: ['mp-weixin', 'mp-alipay', 'mp-baidu', 'mp-toutiao'],
+    default: 'mp-weixin'
+  },
+  {
+    name: 'appId',
     type: 'input',
-    message: '页面标题'
+    message: '小程序Id'
+  },
+  {
+    name: 'projectId',
+    type: 'input',
+    message: '蚂蚁统计Id'
   },
   {
     name: 'username',

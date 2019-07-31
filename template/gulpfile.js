@@ -44,7 +44,7 @@ function uploadStatic(platform) {
     .addFile(newFiles, {
       debug: true,
       ...ftppass,
-      path: 'activity/' + pkg.name,
+      path: 'frontend/uniapp/' + pkg.name,
       cwd: path.resolve(`dist/build/${platform}/`)
     })
     .then(() => {
@@ -62,39 +62,8 @@ function uploadStatic(platform) {
     })
 }
 
-function uploadHtml(dir) {
-  return easeftp.addFile(['index.html'], {
-    debug: true,
-    ...ftppass,
-    path: `${dir}/activity/${pkg.name}`,
-    cwd: path.resolve('dist/build/h5')
-  })
-}
-
-exports['test:h5'] = async function() {
-  await uploadStatic('h5')
-  await uploadHtml('test')
-}
-
-exports['publish:h5'] = async function() {
-  await uploadStatic('h5')
-  await uploadHtml('html')
-}
-
-exports['publish:mp-weixin'] = async function() {
-  await uploadStatic('mp-weixin')
-}
-
-exports['publish:mp-alipay'] = async function() {
-  await uploadStatic('mp-alipay')
-}
-
-exports['publish:mp-baidu'] = async function() {
-  await uploadStatic('mp-baidu')
-}
-
-exports['publish:mp-toutiao'] = async function() {
-  await uploadStatic('mp-toutiao')
+exports['static'] = async function() {
+  await uploadStatic('<%= options.platform %>')
 }
 
 exports['clear'] = function() {

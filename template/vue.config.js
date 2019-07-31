@@ -30,7 +30,7 @@ module.exports = {
         .rule(rule)
         .use(rule === 'svg' ? 'file-loader' : 'url-loader')
         .tap(options => {
-          options.publicPath = process.env.STATIC_PUBLIC_PATH
+          options.publicPath = process.env.VUE_APP_STATIC_PATH
           return options
         })
     })

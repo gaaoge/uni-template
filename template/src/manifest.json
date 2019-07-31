@@ -5,21 +5,11 @@
   "versionName": "1.0.0",
   "versionCode": "100",
   "transformPx": true,
-  "h5": {
-    "publicPath": "//static.ws.126.net/163/activity/<%= options.name %>"
-  },
-  "mp-weixin": {
-    "appid": "",
+  "<%= options.platform %>": {
+    "appid": "<%= options.appid %>",
     "usingComponents": true,
     "setting": {
-      "urlCheck": false,
       "es6": false
     }
-  },
-  "mp-baidu": {
-    "appid": ""
-  },
-  "mp-toutiao": {
-    "appid": ""
   }
 }
