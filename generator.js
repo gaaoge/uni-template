@@ -7,17 +7,17 @@ module.exports = (api, options) => {
       description: options.description,
       author: options.author,
       scripts: {
-        'dev':
-          'cross-env NODE_ENV=development UNI_PLATFORM=<%= options.platform %> vue-cli-service uni-build --watch',
-        'build':
-          'cross-env NODE_ENV=production UNI_PLATFORM=<%= options.platform %> vue-cli-service uni-build --watch',
-        'serve':
-          'cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve',
+        'dev': `cross-env NODE_ENV=development UNI_PLATFORM=${options.platform}
+           vue-cli-service uni-build --watch`,
+        'build': `cross-env NODE_ENV=production UNI_PLATFORM=${options.platform}
+           vue-cli-service uni-build --watch`,
+        'serve': `cross-env NODE_ENV=development UNI_PLATFORM=h5
+           vue-cli-service uni-serve`,
         'lint': 'vue-cli-service lint'
       },
       dependencies: {
         '@dcloudio/uni-h5': '*',
-        '@dcloudio/uni-<%= options.platform %>': '*',
+        [`@dcloudio/uni-${options.platform}`]: '*',
         'flyio': '^0.6.14',
         'vue': '^2.6.10',
         'vuex': '^3.0.1'
