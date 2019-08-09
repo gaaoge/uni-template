@@ -32,7 +32,7 @@ export default {
     _isShow() {
       return !!this.dialogConfig[this.dialog]
     },
-    ...mapState(['dialogConfig'])
+    ...mapState('app', ['dialogConfig'])
   },
   watch: {
     _isShow(val) {
