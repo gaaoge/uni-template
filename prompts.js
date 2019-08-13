@@ -27,7 +27,7 @@ module.exports = [
     default: 'mp-weixin'
   },
   {
-    name: 'appId',
+    name: 'appid',
     type: 'input',
     message: '小程序Id'
   },
