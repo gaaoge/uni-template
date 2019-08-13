@@ -17,6 +17,7 @@ module.exports = (api, options) => {
       dependencies: {
         '@dcloudio/uni-h5': '^0.7.4',
         [`@dcloudio/uni-${options.platform}`]: '^0.0.969',
+        '@mf2e/ant-wechat-sdk': '0.0.3',
         'flyio': '^0.6.14',
         'vue': '^2.6.10',
         'vuex': '^3.0.1'
