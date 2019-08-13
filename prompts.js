@@ -2,7 +2,12 @@ module.exports = [
   {
     name: 'name',
     type: 'input',
-    message: '项目名称'
+    message: '项目名称(英文)'
+  },
+  {
+    name: 'title',
+    type: 'input',
+    message: '项目标题(中文)'
   },
   {
     name: 'description',
