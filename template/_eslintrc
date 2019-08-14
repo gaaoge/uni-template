@@ -12,6 +12,7 @@
     "vue/component-name-in-template-casing": ["error", "kebab-case"]
   },
   "globals": {
-    "uni": true
+    "uni": true,
+    "wx": true
   }
 }

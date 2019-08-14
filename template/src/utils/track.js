@@ -16,6 +16,9 @@ function trackEvent(event, info) {
     val_act: event,
     info
   })
+  // #ifdef MP-WEIXIN
+  wx.reportAnalytics(event, info)
+  // #endif
 }
 
 export { trackInit, trackPage, trackEvent }
