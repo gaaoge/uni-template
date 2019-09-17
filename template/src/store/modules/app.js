@@ -41,6 +41,12 @@ const stores = {
         [payload.dialog || payload]: null
       })
       commit(DIALOG_CONFIG, config)
+    },
+    /**
+     * 清除弹窗
+     */
+    clearDialog({ commit }) {
+      commit(DIALOG_CONFIG, {})
     }
   }
 }
