@@ -36,7 +36,7 @@ function formatDate(dateInput, format) {
 
 // 获取static目录文件的实际路径
 function getStaticPath(path) {
-  return process.env.VUE_APP_STATIC_PATH + 'static/' + path
+  return process.env.VUE_APP_STATIC_PATH + '/static/' + path
 }
 
 // 异步执行函数，等待上一次执行完成后才能进行下次的执行
