@@ -9,20 +9,20 @@ const stores = {
      *  {
      *    url: 请求url,
      *    method: 请求方法（默认get）
-     *    headers: 请求头
      *    params: 请求参数
      *  }
      */
     async fetch(context, payload = {}) {
-      let { url, method = 'get', headers = {}, params } = payload
+      let { url, method = 'get', params } = payload
 
       // 配置url和method
       url = process.env.VUE_APP_BASE_URL + url
       method = method.toLowerCase()
 
       // 配置headers
+      let headers
       if (method === 'post') {
-        headers['Content-Type'] = 'application/x-www-form-urlencoded'
+        headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
       }
 
       // 发送请求
