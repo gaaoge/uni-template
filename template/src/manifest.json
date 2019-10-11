@@ -1,5 +1,5 @@
 {
-  "name": "<%= options.title %>",
+  "name": "<%= options.name %>",
   "appid": "",
   "description": "<%= options.description %>",
   "versionName": "1.0.0",

@@ -2,12 +2,7 @@ module.exports = [
   {
     name: 'name',
     type: 'input',
-    message: '项目名称(英文)'
-  },
-  {
-    name: 'title',
-    type: 'input',
-    message: '项目标题(中文)'
+    message: '项目名称'
   },
   {
     name: 'description',
@@ -18,13 +13,6 @@ module.exports = [
     name: 'author',
     type: 'input',
     message: '项目作者'
-  },
-  {
-    name: 'platform',
-    type: 'list',
-    message: '小程序平台',
-    choices: ['mp-weixin', 'mp-alipay', 'mp-baidu', 'mp-toutiao'],
-    default: 'mp-weixin'
   },
   {
     name: 'appid',
@@ -43,7 +31,14 @@ module.exports = [
   },
   {
     name: 'password',
-    type: 'input',
+    type: 'password',
     message: 'corp邮箱密码'
+  },
+  {
+    name: 'platform',
+    type: 'list',
+    message: '小程序平台',
+    choices: ['mp-weixin', 'mp-alipay', 'mp-baidu', 'mp-toutiao'],
+    default: 'mp-weixin'
   }
 ]

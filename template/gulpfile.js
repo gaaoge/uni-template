@@ -4,7 +4,6 @@ const del = require('del')
 const path = require('path')
 const easeftp = require('easeftp/upload')
 const ftppass = JSON.parse(fs.readFileSync('.ftppass', 'utf-8'))
-
 const cacheDir = path.resolve('node_modules/.cache/easeftp/')
 
 function findFiles(rootPath, replacePath = '') {
