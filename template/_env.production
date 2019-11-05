@@ -1,0 +1,2 @@
+VUE_APP_BASE_URL=https://c.m.163.com/ug/api
+VUE_APP_PUBLIC_PATH=https://static.ws.126.net/163/frontend/uniapp/<%= options.name %>
