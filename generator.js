@@ -8,10 +8,11 @@ module.exports = (api, options) => {
       author: options.author,
       scripts: {
         'serve':
-          'cross-env UNI_PLATFORM=mp-weixin vue-cli-service uni-build --mode development --watch & cross-env UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development',
+          'cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --mode development --watch & cross-env UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development',
         'build':
-          'cross-env UNI_PLATFORM=mp-weixin vue-cli-service uni-build --mode production --watch',
-        'lint': 'vue-cli-service lint'
+          'cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build --mode production --watch',
+        'lint': 'vue-cli-service lint',
+        'upload': 'node uploader.js'
       },
       dependencies: {
         '@dcloudio/uni-h5': '^0.7.4',
@@ -27,17 +28,16 @@ module.exports = (api, options) => {
         '@dcloudio/vue-cli-plugin-uni': '^0.9.511',
         '@dcloudio/webpack-uni-mp-loader': '^0.3.639',
         '@dcloudio/webpack-uni-pages-loader': '^0.2.867',
+        '@newap/uploader': '^2.2.15',
         '@vue/cli-plugin-babel': '^3.10.0',
         '@vue/cli-plugin-eslint': '^3.10.0',
         '@vue/cli-service': '^3.10.0',
         '@vue/eslint-config-prettier': '^5.0.0',
         'babel-eslint': '^10.0.2',
         'babel-plugin-import': '^1.12.0',
-        'easeftp': '^2.0.40',
         'eslint': '^6.1.0',
         'eslint-plugin-vue': '^5.2.3',
         'eslint-plugin-prettier': '^3.1.0',
-        'gulp': '^4.0.2',
         'mocker-api': '^1.7.8',
         'postcss-autosize': '^1.0.1',
         'postcss-preset-env': '^6.7.0',
