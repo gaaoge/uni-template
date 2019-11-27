@@ -2,19 +2,19 @@
   <view class="home-page">
     <text @click="sayHello">Hello Uni!</text>
     <button open-type="share">
-      <home-logo></home-logo>
+      <uni-logo></uni-logo>
     </button>
   </view>
 </template>
 
 <script>
-import HomeLogo from './components/Logo'
+import UniLogo from './components/UniLogo'
 import { getStaticPath } from '@/utils'
 
 export default {
   name: 'home-page',
   components: {
-    HomeLogo
+    UniLogo
   },
   methods: {
     sayHello() {

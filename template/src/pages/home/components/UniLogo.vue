@@ -1,19 +1,16 @@
 <template>
-  <view class="home-logo"></view>
+  <view class="uni-logo"></view>
 </template>
 
 <script>
 export default {
-  name: 'home-logo'
+  name: 'uni-logo'
 }
 </script>
 
 <style lang="postcss" scoped>
-.home-logo {
-  width: 400px;
-  height: 400px;
+.uni-logo {
   margin: 0 auto;
   background: url('../assets/logo.png');
-  background-size: 100% 100%;
 }
 </style>
