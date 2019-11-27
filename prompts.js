@@ -25,16 +25,6 @@ module.exports = [
     message: '蚂蚁统计Id'
   },
   {
-    name: 'username',
-    type: 'input',
-    message: 'corp邮箱前缀(用于上传发布)'
-  },
-  {
-    name: 'password',
-    type: 'password',
-    message: 'corp邮箱密码'
-  },
-  {
     name: 'platform',
     type: 'list',
     message: '小程序平台',
