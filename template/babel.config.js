@@ -1,14 +1,14 @@
 const plugins = []
 process.UNI_LIBRARIES = process.UNI_LIBRARIES || ['@dcloudio/uni-ui']
-process.UNI_LIBRARIES.forEach(libraryName => {
+process.UNI_LIBRARIES.forEach((libraryName) => {
   plugins.push([
     'import',
     {
       libraryName: libraryName,
-      customName: name => {
+      customName: (name) => {
         return `${libraryName}/lib/${name}/${name}`
-      }
-    }
+      },
+    },
   ])
 })
 
@@ -18,9 +18,9 @@ module.exports = {
       '@vue/app',
       {
         modules: 'commonjs',
-        useBuiltIns: 'entry'
-      }
-    ]
+        useBuiltIns: process.env.UNI_PLATFORM === 'h5' ? 'usage' : 'entry',
+      },
+    ],
   ],
-  plugins
+  plugins,
 }
