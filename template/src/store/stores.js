@@ -43,7 +43,7 @@ const stores = {
             },
             fail() {
               reject()
-            }
+            },
           })
         })
       } catch (e) {
@@ -56,7 +56,7 @@ const stores = {
           default:
             uni.showToast({
               title: data.msg,
-              icon: 'none'
+              icon: 'none',
             })
             break
         }
@@ -67,8 +67,8 @@ const stores = {
       }
 
       return data.data
-    }
-  }
+    },
+  },
 }
 
 export default stores

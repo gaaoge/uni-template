@@ -14,7 +14,7 @@ function findFiles(rootPath, replacePath = '') {
 
   function finder(tempPath) {
     let files = fs.readdirSync(tempPath)
-    files.forEach(val => {
+    files.forEach((val) => {
       let fPath = path.posix.join(tempPath, val)
       let stats = fs.statSync(fPath)
 
@@ -42,7 +42,7 @@ async function uploadStatic(platform) {
   await new Uploader({
     dir: staticPath,
     target: `frontend/uniapp/${pkg.name}/static`,
-    exclude: cacheFiles.map(item => new RegExp(path.basename(item)))
+    exclude: cacheFiles.map((item) => new RegExp(path.basename(item))),
   }).run()
 
   if (!fs.existsSync(cacheDir)) {
@@ -67,14 +67,14 @@ async function upload() {
       choices: [
         {
           name: chalk.bold.yellow('本地开发'),
-          value: 'dev'
+          value: 'dev',
         },
         {
           name: chalk.bold.yellow('线上发布'),
-          value: 'build'
-        }
-      ]
-    }
+          value: 'build',
+        },
+      ],
+    },
   ])
   uploadEnv = data.env
 

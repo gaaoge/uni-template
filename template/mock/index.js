@@ -6,7 +6,7 @@ function findFiles(rootPath, replacePath = '') {
 
   function finder(tempPath) {
     let files = fs.readdirSync(tempPath)
-    files.forEach(val => {
+    files.forEach((val) => {
       let fPath = path.posix.join(tempPath, val)
       let stats = fs.statSync(fPath)
 
@@ -25,7 +25,7 @@ function findFiles(rootPath, replacePath = '') {
 const files = findFiles(`mock`)
 const proxy = {}
 
-files.forEach(file => {
+files.forEach((file) => {
   if (file === '/index.js') return
 
   let path = file.replace('.json', '')

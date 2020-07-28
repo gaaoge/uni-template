@@ -18,34 +18,34 @@ export default {
   props: {
     dialog: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
       isShow: false,
       isEnter: false,
-      isLeave: false
+      isLeave: false,
     }
   },
   computed: {
     _isShow() {
       return !!this.dialogConfig[this.dialog]
     },
-    ...mapState('app', ['dialogConfig'])
+    ...mapState('app', ['dialogConfig']),
   },
   watch: {
     _isShow(val) {
       if (val) this.isShow = val
       this.isEnter = val
       this.isLeave = !val
-    }
+    },
   },
   methods: {
     animationEnd() {
       this.isShow = this._isShow
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -6,10 +6,10 @@ module.exports = {
     devServer: {
       before(app) {
         apiMocker(app, path.resolve('./mock/index.js'))
-      }
-    }
+      },
+    },
   },
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('images')
       .test(/\.(png|jpe?g)(\?.*)?$/)
@@ -18,21 +18,21 @@ module.exports = {
       .tap(() => {
         return {
           apikey: 'ai3NQ23wq2pbQvy2JNylfuQMNJ99YAOZ',
-          cache: path.resolve('node_modules/.cache/tinify-loader')
+          cache: path.resolve('node_modules/.cache/tinify-loader'),
         }
       })
 
     config.module.rule('svg').test(/\.(svg|gif|webp)(\?.*)?$/)
 
     let rules = ['images', 'svg', 'media', 'fonts']
-    rules.forEach(rule => {
+    rules.forEach((rule) => {
       config.module
         .rule(rule)
         .use(rule === 'svg' ? 'file-loader' : 'url-loader')
-        .tap(options => {
+        .tap((options) => {
           options.publicPath = process.env.VUE_APP_PUBLIC_PATH
           return options
         })
     })
-  }
+  },
 }

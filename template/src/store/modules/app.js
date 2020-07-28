@@ -3,12 +3,12 @@ const DIALOG_CONFIG = 'DIALOG_CONFIG'
 const stores = {
   namespaced: true,
   state: {
-    dialogConfig: {}
+    dialogConfig: {},
   },
   mutations: {
     [DIALOG_CONFIG](state, payload) {
       state.dialogConfig = payload
-    }
+    },
   },
   actions: {
     /**
@@ -24,7 +24,7 @@ const stores = {
      */
     openDialog({ state, commit }, payload) {
       let config = Object.assign({}, state.dialogConfig, {
-        [payload.dialog || payload]: payload
+        [payload.dialog || payload]: payload,
       })
       commit(DIALOG_CONFIG, config)
     },
@@ -38,7 +38,7 @@ const stores = {
      */
     closeDialog({ state, commit }, payload) {
       let config = Object.assign({}, state.dialogConfig, {
-        [payload.dialog || payload]: null
+        [payload.dialog || payload]: null,
       })
       commit(DIALOG_CONFIG, config)
     },
@@ -47,8 +47,8 @@ const stores = {
      */
     clearDialog({ commit }) {
       commit(DIALOG_CONFIG, {})
-    }
-  }
+    },
+  },
 }
 
 export default stores

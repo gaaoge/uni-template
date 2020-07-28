@@ -14,7 +14,7 @@ export default {
   },
   onHide() {
     // App Hide
-  }
+  },
 }
 </script>
 

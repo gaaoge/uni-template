@@ -5,9 +5,9 @@ const uniPlugin = require('@dcloudio/vue-cli-plugin-uni/packages/postcss')
 module.exports = {
   plugins: [
     presetEnv({
-      stage: 0
+      stage: 0,
     }),
     autoSize(),
-    uniPlugin()
-  ]
+    uniPlugin(),
+  ],
 }

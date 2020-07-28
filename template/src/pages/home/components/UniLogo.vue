@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'uni-logo'
+  name: 'uni-logo',
 }
 </script>
 

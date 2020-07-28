@@ -14,24 +14,24 @@ import { getStaticPath } from '@/utils'
 export default {
   name: 'home-page',
   components: {
-    UniLogo
+    UniLogo,
   },
   methods: {
     sayHello() {
       uni.showToast({
         title: 'Hello Uni!',
         icon: 'none',
-        duration: 2000
+        duration: 2000,
       })
-    }
+    },
   },
   onShareAppMessage() {
     return {
       title: 'Hello Uni!',
       path: 'pages/home/Page',
-      imageUrl: getStaticPath('share-icon.png')
+      imageUrl: getStaticPath('share-icon.png'),
     }
-  }
+  },
 }
 </script>
 

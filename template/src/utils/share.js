@@ -5,7 +5,7 @@ function shareRegister(callback) {
 }
 
 function shareCallback() {
-  callbacks.forEach(callback => {
+  callbacks.forEach((callback) => {
     callback()
   })
   callbacks = []
