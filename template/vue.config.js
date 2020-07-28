@@ -22,16 +22,33 @@ module.exports = {
         }
       })
 
-    config.module.rule('svg').test(/\.(svg|gif|webp)(\?.*)?$/)
+    config.module
+      .rule('svg')
+      .test(/\.(svg|gif|webp)(\?.*)?$/)
+      .use('file-loader')
+      .tap(() => {
+        return {
+          name: 'static/images/[name].[hash:8].[ext]',
+          publicPath: process.env.VUE_APP_PUBLIC_PATH,
+        }
+      })
 
-    let rules = ['images', 'svg', 'media', 'fonts']
+    let rules = ['images', 'media', 'fonts']
     rules.forEach((rule) => {
       config.module
         .rule(rule)
-        .use(rule === 'svg' ? 'file-loader' : 'url-loader')
-        .tap((options) => {
-          options.publicPath = process.env.VUE_APP_PUBLIC_PATH
-          return options
+        .use('url-loader')
+        .tap(() => {
+          return {
+            limit: 4096,
+            fallback: {
+              loader: 'file-loader',
+              options: {
+                name: `static/${rule}/[name].[hash:8].[ext]`,
+                publicPath: process.env.VUE_APP_PUBLIC_PATH,
+              },
+            },
+          }
         })
     })
   },
