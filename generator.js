@@ -35,16 +35,19 @@ module.exports = (api, options) => {
         '@vue/eslint-config-prettier': '^6.0.0',
         'babel-eslint': '^10.1.0',
         'babel-plugin-import': '^1.13.0',
+        'chalk': '^4.1.0',
         'eslint': '^7.5.0',
         'eslint-plugin-prettier': '^3.1.4',
         'eslint-plugin-vue': '^6.2.2',
+        'inquirer': '^7.3.3',
         'mocker-api': '^2.2.0',
         'postcss-autosize': '^1.0.2',
         'postcss-preset-env': '^6.7.0',
+        'prettier': '^2.0.5',
         'tinify-loader': '^1.0.0',
         'vue-template-compiler': '^2.6.11',
       },
-      browserslist: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'iOS >= 8'],
+      browserslist: ['> 1%', 'last 2 versions', 'Android >= 4', 'iOS >= 8'],
     }
   })
 
