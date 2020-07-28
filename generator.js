@@ -7,8 +7,7 @@ module.exports = (api, options) => {
       description: options.description,
       author: options.author,
       scripts: {
-        'serve': `cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development`,
-        'dev': `cross-env NODE_ENV=development UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode development --watch`,
+        'serve': `cross-env NODE_ENV=development UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode development --watch & cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development`,
         'build': `cross-env NODE_ENV=production UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode production`,
         'lint': 'vue-cli-service lint',
         'upload': 'node uploader.js',
