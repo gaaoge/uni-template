@@ -2,12 +2,9 @@ const pkg = require('./package.json')
 const fs = require('fs')
 const del = require('del')
 const path = require('path')
-const chalk = require('chalk')
-const inquirer = require('inquirer')
 const Uploader = require('@newap/uploader')
 
-const cacheDir = path.resolve('node_modules/.cache/uploader/')
-let uploadEnv
+const cacheDir = path.resolve('node_modules/.loader-cache/uploader/')
 
 function findFiles(rootPath, replacePath = '') {
   let result = []
@@ -30,18 +27,17 @@ function findFiles(rootPath, replacePath = '') {
   return result
 }
 
-async function uploadStatic(platform) {
-  let staticPath = `dist/${uploadEnv}/${platform}/static/`
-  let allFiles = findFiles(staticPath)
-  let cacheFiles = []
-  let cachePath = `${cacheDir}/cache-${platform}.json`
+async function uploadCDN() {
+  let filesPath = `dist/build/${process.env.UNI_PLATFORM}/cdn/`
+  let allFiles = findFiles(filesPath)
+  let cachePath = `${cacheDir}/cache-${process.env.UNI_PLATFORM}.json`
   if (fs.existsSync(cachePath)) {
     cacheFiles = JSON.parse(fs.readFileSync(cachePath, 'utf-8'))
   }
 
   await new Uploader({
-    dir: staticPath,
-    target: `frontend/uniapp/${pkg.name}/static`,
+    dir: filesPath,
+    target: `frontend/uniapp/${pkg.name}/cdn`,
     exclude: cacheFiles.map((item) => new RegExp(path.basename(item))),
   }).run()
 
@@ -55,30 +51,7 @@ async function uploadStatic(platform) {
     }, '/')
   }
   fs.writeFileSync(cachePath, JSON.stringify(allFiles))
-  del(staticPath)
+  del(filesPath)
 }
 
-async function upload() {
-  let data = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'env',
-      message: '请选择:',
-      choices: [
-        {
-          name: chalk.bold.yellow('本地开发'),
-          value: 'dev',
-        },
-        {
-          name: chalk.bold.yellow('线上发布'),
-          value: 'build',
-        },
-      ],
-    },
-  ])
-  uploadEnv = data.env
-
-  await uploadStatic('mp-weixin')
-}
-
-upload()
+uploadCDN()

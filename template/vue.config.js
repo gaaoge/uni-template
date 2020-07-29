@@ -18,7 +18,7 @@ module.exports = {
       .tap(() => {
         return {
           apikey: 'ai3NQ23wq2pbQvy2JNylfuQMNJ99YAOZ',
-          cache: path.resolve('node_modules/.cache/tinify-loader'),
+          cache: path.resolve('node_modules/.loader-cache/tinify-loader'),
         }
       })
 
@@ -28,7 +28,7 @@ module.exports = {
       .use('file-loader')
       .tap(() => {
         return {
-          name: 'static/images/[name].[hash:8].[ext]',
+          name: 'cdn/images/[name].[hash:8].[ext]',
           publicPath: process.env.VUE_APP_PUBLIC_PATH,
         }
       })
@@ -44,7 +44,7 @@ module.exports = {
             fallback: {
               loader: 'file-loader',
               options: {
-                name: `static/${rule}/[name].[hash:8].[ext]`,
+                name: `cdn/${rule}/[name].[hash:8].[ext]`,
                 publicPath: process.env.VUE_APP_PUBLIC_PATH,
               },
             },

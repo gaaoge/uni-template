@@ -8,9 +8,9 @@ module.exports = (api, options) => {
       author: options.author,
       scripts: {
         'serve': `cross-env NODE_ENV=development UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode development --watch & cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development`,
-        'build': `cross-env NODE_ENV=production UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode production`,
+        'build': `cross-env NODE_ENV=production UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode production && npm run upload`,
         'lint': 'vue-cli-service lint',
-        'upload': 'node uploader.js',
+        'upload': `cross-env UNI_PLATFORM=${options.platform} node uploader.js`,
       },
       dependencies: {
         '@dcloudio/uni-h5': '^2.0.0-28220200724002',
@@ -35,11 +35,9 @@ module.exports = (api, options) => {
         '@vue/eslint-config-prettier': '^6.0.0',
         'babel-eslint': '^10.1.0',
         'babel-plugin-import': '^1.13.0',
-        'chalk': '^4.1.0',
         'eslint': '^7.5.0',
         'eslint-plugin-prettier': '^3.1.4',
         'eslint-plugin-vue': '^6.2.2',
-        'inquirer': '^7.3.3',
         'mocker-api': '^2.2.0',
         'postcss-autosize': '^1.0.2',
         'postcss-preset-env': '^6.7.0',
