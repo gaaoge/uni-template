@@ -20,6 +20,6 @@ export default {
 
 <style lang="postcss">
 page {
-  font: 28px/1.5 sans-serif;
+  font: 24px / normal sans-serif;
 }
 </style>
