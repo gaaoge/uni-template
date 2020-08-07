@@ -7,10 +7,10 @@ module.exports = (api, options) => {
       description: options.description,
       author: options.author,
       scripts: {
-        'serve': `cross-env NODE_ENV=development UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode development --watch & cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development`,
-        'build': `cross-env NODE_ENV=production UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode production && npm run upload`,
+        'serve': `cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve --mode development`,
+        'dev': `cross-env NODE_ENV=development UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode development --watch`,
+        'build': `cross-env NODE_ENV=production UNI_PLATFORM=${options.platform} vue-cli-service uni-build --mode production && cross-env UNI_PLATFORM=${options.platform} node uploader.js`,
         'lint': 'vue-cli-service lint',
-        'upload': `cross-env UNI_PLATFORM=${options.platform} node uploader.js`,
       },
       dependencies: {
         '@dcloudio/uni-h5': '^2.0.0-28220200724002',

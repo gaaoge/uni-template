@@ -29,6 +29,8 @@ function findFiles(rootPath, replacePath = '') {
 
 async function uploadCDN() {
   let filesPath = `dist/build/${process.env.UNI_PLATFORM}/cdn/`
+  if (!fs.existsSync(filesPath)) return
+
   let allFiles = findFiles(filesPath)
   let cachePath = `${cacheDir}/cache-${process.env.UNI_PLATFORM}.json`
   if (fs.existsSync(cachePath)) {
